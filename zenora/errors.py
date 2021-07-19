@@ -31,16 +31,21 @@ import requests
 
 
 def raise_error_or_return(r: requests.Response) -> typing.Optional[dict]:
+    json_data = {}
     try:
-        json_data = r.json()
+        if r.content:
+            json_data = r.json()
     except json.decoder.JSONDecodeError:
         raise CloudflareException("Cloudflare blocking API request to Discord")
     if not r.ok:
-        if "X-RateLimit-Bucket" in r.headers:  # Rate limited
+        rate_limit_remaining = r.headers.get("x-ratelimit-remaining")
+        if rate_limit_remaining == 0 or (rate_limit_remaining and int(rate_limit_remaining) == 0):  # Rate limited
             handle_rate_limit(r)
         elif r.status_code == 401:  # Unauthorized
             raise AuthenticationError(json_data["message"])
         else:
+            if "message" in json_data:
+                raise APIError(f"{json_data['message']}")
             if "error" in json_data:
                 raise APIError(f"{json_data['error_description']}")
             for x in json_data["errors"]:

@@ -17,7 +17,7 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
+from zenora.api.channel_api import ChannelAPI
 from zenora.exceptions import AuthenticationError, BadTokenError
 from zenora import UserAPI, UserAPIImpl, OauthAPI, OauthAPIImpl
 
@@ -25,6 +25,8 @@ import typing
 
 
 __all__: typing.Final[typing.List[str]] = ["APIClient"]
+
+from zenora.impl.channel_api import ChannelAPIImpl
 
 
 class APIClient:
@@ -49,6 +51,7 @@ class APIClient:
         self._token = f"{self._token_prefix} {token}"
         self._client_secret = client_secret
         self._user_client = UserAPIImpl(self)
+        self._channel_client = ChannelAPIImpl(self)
         self._oauth_client = None
 
         if client_secret:
@@ -72,6 +75,11 @@ class APIClient:
     def users(self) -> UserAPI:
         """Returns an instance of the UserAPI class"""
         return self._user_client
+
+    @property
+    def channels(self) -> ChannelAPI:
+        """Returns an instance of the UserAPI class"""
+        return self._channel_client
 
     @property
     def oauth(self) -> typing.Optional[OauthAPI]:

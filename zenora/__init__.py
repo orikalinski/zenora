@@ -22,6 +22,8 @@ from datetime import datetime
 
 from .models.snowflake import *
 from .models.user import *
+from .models.channel import *
+from .models.message import *
 from .models.connection import *
 from .models.integration import *
 
