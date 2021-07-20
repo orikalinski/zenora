@@ -2,12 +2,13 @@ import typing
 
 from zenora.api.channel_api import ChannelAPI
 from zenora.models.channel import Channel
+from zenora.models.guild import Guild
 from zenora.models.message import Message
 from zenora.models.user import User
 from zenora.request import Request
 from zenora.routes import (
     BASE_URL,
-    GET_CHANNEL, CHANNEL_MESSAGE, CHANNEL_MESSAGES,
+    GET_CHANNEL, CHANNEL_MESSAGE, CHANNEL_MESSAGES, GET_GUILD,
 )
 
 __all__: typing.Final[typing.List[str]] = ["ChannelAPIImpl"]
@@ -25,6 +26,12 @@ class ChannelAPIImpl(ChannelAPI):
         request = Request(self._token, url, "GET")
         payload = request.execute()
         return Channel(**payload)
+
+    def get_guild(self, guild_id):
+        url = BASE_URL + GET_GUILD.format(guild_id)
+        request = Request(self._token, url, "GET")
+        payload = request.execute()
+        return Guild(**payload)
 
     def parse_message(self, message_payload):
         message_payload["author"] = User(**message_payload["author"])

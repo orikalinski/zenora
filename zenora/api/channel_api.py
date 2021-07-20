@@ -1,6 +1,7 @@
 import typing
 from abc import ABC, abstractmethod
 
+from zenora.models.guild import Guild
 from zenora.models.message import Message
 from zenora.models.snowflake import Snowflake
 from zenora.models.channel import Channel
@@ -20,6 +21,17 @@ class ChannelAPI(ABC):
 
         Returns:
             Channel: An object representing a channel on Discord
+        """
+
+    @abstractmethod
+    def get_guild(self, guild_id: typing.Union[str, Snowflake]) -> Guild:
+        """Returns a guild with the corresponding ID
+
+        Args:
+            guild_id (typing.Union[str, Snowflake]): Snowflake ID of the channel
+
+        Returns:
+            Channel: An object representing a guild on Discord
         """
 
     @abstractmethod
