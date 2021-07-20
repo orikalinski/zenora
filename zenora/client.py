@@ -56,16 +56,17 @@ class APIClient:
         self._user_client = UserAPIImpl(self)
         self._channel_client = ChannelAPIImpl(self)
         self._oauth_client = None
+        self.user = None
 
         if client_secret:
             self._oauth_client = OauthAPIImpl(self, client_secret)
 
         if validate_token:
-            self._validate_token()
+            self.user = self._validate_token()
 
     def _validate_token(self):
         try:
-            self.users.get_current_user()
+            return self.users.get_current_user()
         except AuthenticationError:
             raise BadTokenError("Invalid token has been passed")
 

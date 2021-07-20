@@ -44,3 +44,7 @@ class Message:
     tts: bool = attr.ib()
 
     edited_timestamp: typing.Optional[str] = attr.ib(default=None)
+
+    message_reference: typing.Optional[dict] = attr.ib(default=None)
+
+    referenced_message: typing.Optional['Message'] = attr.ib(default=None)

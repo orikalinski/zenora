@@ -26,9 +26,11 @@ class ChannelAPIImpl(ChannelAPI):
         payload = request.execute()
         return Channel(**payload)
 
-    @staticmethod
-    def parse_message(message_payload):
+    def parse_message(self, message_payload):
         message_payload["author"] = User(**message_payload["author"])
+        referenced_message = message_payload.get("referenced_message")
+        if referenced_message:
+            message_payload["referenced_message"] = self.parse_message(referenced_message)
         return Message(**message_payload)
 
     def get_message(self, channel_id, message_id):
