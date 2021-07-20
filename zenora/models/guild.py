@@ -16,9 +16,13 @@ class Guild:
 
     name: str = attr.ib()
 
-    nsfw: bool = attr.ib()
+    nsfw: typing.Optional[bool] = attr.ib(default=None)
 
     topic: typing.Optional[str] = attr.ib(default=None)
+
+    approximate_member_count: typing.Optional[int] = attr.ib(default=None)
+
+    approximate_presence_count: typing.Optional[int] = attr.ib(default=None)
 
     rate_limit_per_user: typing.Optional[int] = attr.ib(default=None)
 
