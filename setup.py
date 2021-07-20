@@ -43,5 +43,5 @@ setup(
     python_requires=">=3.8",
     include_package_data=True,
     exclude=("__pycache__",),
-    install_requires=["requests", "attrs"],
+    install_requires=["requests==2.24.0", "attrs==20.3.0"],
 )
