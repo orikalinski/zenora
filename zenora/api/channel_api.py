@@ -42,7 +42,20 @@ class ChannelAPI(ABC):
             guild_id (typing.Union[str, Snowflake]): Snowflake ID of the channel
 
         Returns:
-            Channel: An object representing a guild on Discord
+            Guild: An object representing a guild on Discord
+        """
+
+    @staticmethod
+    @abstractmethod
+    def get_guild_icon_url(guild_id: typing.Union[str, Snowflake], icon_hash: str) -> str:
+        """Returns a guild with the corresponding ID
+
+        Args:
+            guild_id (typing.Union[str, Snowflake]): Snowflake ID of the channel
+            icon_hash (str): the hash of the guild's icon
+
+        Returns:
+            str: the file path of an icon of a guild on Discord
         """
 
     @abstractmethod

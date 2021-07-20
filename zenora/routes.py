@@ -23,6 +23,8 @@ BASE_URL = "https://discord.com/api/v9"
 
 # CDN Endpoints
 USER_AVATAR = "/avatars"
+ICONS = "/icons"
+GUILD_ICON = CDN_URL + ICONS + "/{}" + "/{}.png"
 
 # Oauth
 OAUTH_TOKEN_URL = "/oauth2/token"
