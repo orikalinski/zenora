@@ -35,6 +35,17 @@ class ChannelAPI(ABC):
         """
 
     @abstractmethod
+    def get_guild_preview(self, guild_id: typing.Union[str, Snowflake]) -> Guild:
+        """Returns a guild with the corresponding ID
+
+        Args:
+            guild_id (typing.Union[str, Snowflake]): Snowflake ID of the channel
+
+        Returns:
+            Channel: An object representing a guild on Discord
+        """
+
+    @abstractmethod
     def get_message(self, channel_id: typing.Union[str, Snowflake],
                     message_id: typing.Union[str, Snowflake]) -> Message:
         """Returns a channel with the corresponding ID

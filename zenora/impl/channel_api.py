@@ -8,7 +8,7 @@ from zenora.models.user import User
 from zenora.request import Request
 from zenora.routes import (
     BASE_URL,
-    GET_CHANNEL, CHANNEL_MESSAGE, CHANNEL_MESSAGES, GET_GUILD,
+    GET_CHANNEL, CHANNEL_MESSAGE, CHANNEL_MESSAGES, GET_GUILD, GET_GUILD_PREVIEW,
 )
 
 __all__: typing.Final[typing.List[str]] = ["ChannelAPIImpl"]
@@ -29,6 +29,12 @@ class ChannelAPIImpl(ChannelAPI):
 
     def get_guild(self, guild_id):
         url = BASE_URL + GET_GUILD.format(guild_id)
+        request = Request(self._token, url, "GET")
+        payload = request.execute()
+        return Guild(**payload)
+
+    def get_guild_preview(self, guild_id):
+        url = BASE_URL + GET_GUILD_PREVIEW.format(guild_id)
         request = Request(self._token, url, "GET")
         payload = request.execute()
         return Guild(**payload)
