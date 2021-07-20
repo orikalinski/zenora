@@ -17,7 +17,10 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-
+from zenora.api.userapi import UserAPI
+from zenora.models.connection import Connection
+from zenora.models.snowflake import Snowflake, SnowflakeOr
+from zenora.models.user import OwnUser, User
 from zenora.utils import convert_image_to_data, extract_snowflake_from_object
 from zenora.routes import (
     BASE_URL,
@@ -27,7 +30,6 @@ from zenora.routes import (
     DM_URL,
 )
 from zenora.request import Request
-from zenora import OwnUser, User, Snowflake, Connection, UserAPI, SnowflakeOr
 
 import typing
 

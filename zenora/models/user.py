@@ -20,7 +20,7 @@
 
 from zenora.routes import CDN_URL, USER_AVATAR
 from zenora.utils import get__str__
-from zenora import Snowflake
+from zenora.models.snowflake import Snowflake
 import typing
 import attr
 
@@ -126,6 +126,8 @@ class OwnUser(User):
 
     """The type of Discord Nitro subscription on a user's account"""
     premium_type: typing.Optional[int] = attr.ib(default=None)
+
+    accent_color: typing.Optional[int] = attr.ib(default=None)
 
     _verified: typing.Optional[bool] = attr.ib(default=None)
 

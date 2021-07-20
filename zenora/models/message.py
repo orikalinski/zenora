@@ -2,7 +2,8 @@ import typing
 
 import attr
 
-from zenora import Snowflake, User
+from zenora.models.snowflake import Snowflake
+from zenora.models.user import User
 from zenora.utils import get__str__
 
 __all__: typing.Final[typing.List[str]] = ["Message"]

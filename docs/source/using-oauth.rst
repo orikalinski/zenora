@@ -16,7 +16,7 @@ Usage
 =======================
 ::
 
-    from zenora import APIClient
+    from zenora.client import APIClient
 
     token = "Your bot's token"
     client = APIClient(

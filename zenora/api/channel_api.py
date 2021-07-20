@@ -1,8 +1,9 @@
 import typing
 from abc import ABC, abstractmethod
 
-from zenora import Snowflake
-from zenora import Channel, Message
+from zenora.models.message import Message
+from zenora.models.snowflake import Snowflake
+from zenora.models.channel import Channel
 
 __all__: typing.Final[typing.List[str]] = ["ChannelAPI"]
 

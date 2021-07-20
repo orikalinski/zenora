@@ -17,22 +17,31 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+import json
+from os import path
 
 from setuptools import setup
 
-import zenora
+here = path.abspath(path.dirname(__file__))
+root = path.dirname(here)
 
-with open("README.md", "r") as fh:
+readme = path.join(here, 'README.md')
+package_json = path.join(here, 'package.json')
+
+with open(readme, "r") as fh:
     long_description = fh.read()
 
+with open(package_json, encoding='utf-8') as f:
+    package = json.load(f)
+
 setup(
-    name="Zenora",
-    author=zenora.__author__,
-    author_email=zenora.__email__,
-    version=zenora.__version__,
+    name=package['name'],
+    author=package['author']['name'],
+    author_email=package['author']['email'],
+    version=package['version'],
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url=zenora.__github__,
+    url=package['homepage'],
     packages=["zenora", "zenora.api", "zenora.impl", "zenora.models"],
     classifiers=[
         "Programming Language :: Python :: 3",

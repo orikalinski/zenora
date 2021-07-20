@@ -18,9 +18,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora import OauthAPI
 from zenora.request import Request
 from zenora.routes import BASE_URL, OAUTH_TOKEN_URL
+from ..api.oauthapi import OauthAPI
 from ..models.oauth import OauthResponse
 
 import typing

@@ -19,8 +19,8 @@
 # SOFTWARE.
 
 from zenora.models.connection import Connection
-from zenora import Snowflake, SnowflakeOr
-from zenora import OwnUser, User
+from zenora.models.snowflake import Snowflake, SnowflakeOr
+from zenora.models.user import OwnUser, User
 from abc import ABC, abstractmethod
 
 import typing

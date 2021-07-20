@@ -1,0 +1,7 @@
+{
+  "name": "zenora",
+  "version": "0.0.1",
+  "author": {"name": "K.M Ahnaf Zamil", "email": "ahnaf@ahnafzamil.com"},
+  "description": "A simple to use synchronous yet functional Discord API wrapper for Python",
+  "homepage": "https://github.com/ahnaf-zamil/zenora"
+}

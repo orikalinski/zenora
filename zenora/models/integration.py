@@ -18,12 +18,14 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from zenora import Snowflake, User
+from zenora.models.snowflake import Snowflake
+from zenora.models.user import User
 
 import attr
 import typing
 
 __all__: typing.Final[typing.List[str]] = ["Integration"]
+
 
 
 @attr.s(slots=True)

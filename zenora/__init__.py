@@ -18,34 +18,18 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from datetime import datetime
-
-from .models.snowflake import *
-from .models.user import *
+from .api.oauthapi import *
+from .api.userapi import *
+from .client import *
+from .exceptions import *
+from .impl.oauthapi import *
+from .impl.userapi import *
 from .models.channel import *
-from .models.message import *
 from .models.connection import *
 from .models.integration import *
+from .models.message import *
+from .models.snowflake import *
+from .models.user import *
 
-from .api.userapi import *
-from .api.oauthapi import *
-
-from .impl.userapi import *
-from .impl.oauthapi import *
-
-from .client import *
 from .request import *
 from .utils import *
-from .exceptions import *
-
-
-__version__ = "0.0.1"
-__author__ = "K.M Ahnaf Zamil"
-__copyright__ = (
-    f"Copyright (c) {datetime.now().strftime('%Y')} K.M Ahnaf Zamil"
-)
-__email__ = "ahnaf@ahnafzamil.com"
-__description__ = (
-    "A simple to use synchronous yet functional Discord API wrapper for Python"
-)
-__github__ = "https://github.com/ahnaf-zamil/zenora"

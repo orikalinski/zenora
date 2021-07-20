@@ -2,7 +2,7 @@ import typing
 
 import attr
 
-from zenora import Snowflake
+from zenora.models.snowflake import Snowflake
 from zenora.utils import get__str__
 
 __all__: typing.Final[typing.List[str]] = ["Channel"]

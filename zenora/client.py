@@ -18,8 +18,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 from zenora.api.channel_api import ChannelAPI
+from zenora.api.oauthapi import OauthAPI
+from zenora.api.userapi import UserAPI
 from zenora.exceptions import AuthenticationError, BadTokenError
-from zenora import UserAPI, UserAPIImpl, OauthAPI, OauthAPIImpl
 
 import typing
 
@@ -27,6 +28,8 @@ import typing
 __all__: typing.Final[typing.List[str]] = ["APIClient"]
 
 from zenora.impl.channel_api import ChannelAPIImpl
+from zenora.impl.oauthapi import OauthAPIImpl
+from zenora.impl.userapi import UserAPIImpl
 
 
 class APIClient:

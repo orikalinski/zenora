@@ -1,7 +1,9 @@
 import typing
 
-from zenora import Channel, Message, User
 from zenora.api.channel_api import ChannelAPI
+from zenora.models.channel import Channel
+from zenora.models.message import Message
+from zenora.models.user import User
 from zenora.request import Request
 from zenora.routes import (
     BASE_URL,

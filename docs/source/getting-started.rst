@@ -15,7 +15,7 @@ Usage
 =======================
 ::
 
-    from zenora import APIClient
+    from zenora.client import APIClient
 
     client = APIClient(token="...")
     # There is also a set_token method which can be used to replace the token later on

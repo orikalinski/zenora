@@ -24,7 +24,7 @@ from zenora.utils import (
     is_valid_url,
     extract_snowflake_from_object,
 )
-from zenora import Snowflake, User
+from zenora.models.snowflake import Snowflake
 
 import zenora
 import pytest
