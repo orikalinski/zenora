@@ -70,7 +70,7 @@ class ChannelAPIImpl(ChannelAPI):
     def delete_message(self, channel_id, message_id):
         url = BASE_URL + CHANNEL_MESSAGE.format(channel_id, message_id)
         request = Request(self._token, url, "DELETE")
-        request.execute()
+        return request.execute()
 
     def send_message(self, channel_id, content, menu=None):
         url = BASE_URL + CHANNEL_MESSAGES.format(channel_id)
@@ -78,7 +78,7 @@ class ChannelAPIImpl(ChannelAPI):
         if menu:
             json_data["components"] = menu.to_components()
         request = Request(self._token, url, "POST", json_data=json_data)
-        request.execute()
+        return request.execute()
 
     def edit_message(self, channel_id, message_id, content, menu=None):
         url = BASE_URL + CHANNEL_MESSAGES.format(channel_id)
@@ -86,4 +86,4 @@ class ChannelAPIImpl(ChannelAPI):
         if menu:
             json_data["components"] = menu.to_components()
         request = Request(self._token, url, "PATCH", json_data=json_data)
-        request.execute()
+        return request.execute()
