@@ -21,9 +21,14 @@ class Button:
     custom_id: typing.Optional[str] = attr.ib(default=None)
 
     def to_dict(self):
-        data = {"type": self.type, "label": self.label, "style": 1}
+        data = {"type": self.type, "label": self.label}
         if self.custom_id:
+            style = 1
             data["custom_id"] = self.custom_id
-        if self.url:
+        elif self.url:
+            style = 5
             data["url"] = self.url
+        else:
+            raise Exception("You need either custom_id or url in order to use Button")
+        data["style"] = style
         return data
