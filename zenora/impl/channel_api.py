@@ -1,8 +1,10 @@
 import typing
 
 from zenora.api.channel_api import ChannelAPI
+from zenora.models.button import Button
 from zenora.models.channel import Channel
 from zenora.models.guild import Guild
+from zenora.models.menu import Menu
 from zenora.models.message import Message
 from zenora.models.user import User
 from zenora.request import Request
@@ -70,12 +72,18 @@ class ChannelAPIImpl(ChannelAPI):
         request = Request(self._token, url, "DELETE")
         request.execute()
 
-    def send_message(self, channel_id, content):
+    def send_message(self, channel_id, content, menu=None):
         url = BASE_URL + CHANNEL_MESSAGES.format(channel_id)
-        request = Request(self._token, url, "POST", json_data={"content": content})
+        json_data = {"content": content}
+        if menu:
+            json_data["components"] = menu.to_components()
+        request = Request(self._token, url, "POST", json_data=json_data)
         request.execute()
 
-    def edit_message(self, channel_id, message_id, content):
+    def edit_message(self, channel_id, message_id, content, menu=None):
         url = BASE_URL + CHANNEL_MESSAGES.format(channel_id)
-        request = Request(self._token, url, "PATCH", json_data={"content": content})
+        json_data = {"content": content}
+        if menu:
+            json_data["components"] = menu.to_components()
+        request = Request(self._token, url, "PATCH", json_data=json_data)
         request.execute()

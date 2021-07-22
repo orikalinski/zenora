@@ -2,6 +2,7 @@ import typing
 from abc import ABC, abstractmethod
 
 from zenora.models.guild import Guild
+from zenora.models.menu import Menu
 from zenora.models.message import Message
 from zenora.models.snowflake import Snowflake
 from zenora.models.channel import Channel
@@ -101,12 +102,13 @@ class ChannelAPI(ABC):
         """
 
     @abstractmethod
-    def send_message(self, channel_id: typing.Union[str, Snowflake], content: str):
+    def send_message(self, channel_id: typing.Union[str, Snowflake], content: str, menu: typing.Optional[Menu]):
         """Returns a channel with the corresponding ID
 
         Args:
             channel_id (typing.Union[str, Snowflake]): Snowflake ID of the channel
             content (str): Snowflake ID of the channel
+            menu: typing.Optional[Menu]
 
         Returns:
         """
